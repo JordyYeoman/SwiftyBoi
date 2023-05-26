@@ -38,3 +38,8 @@ print(j.initialLife)
 j.sayHello()
 j.fookinSendIt()
 
+
+for _ in 1...3 {
+    print("Yooo")
+}
+
