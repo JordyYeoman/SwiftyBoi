@@ -86,6 +86,11 @@ struct PlayerCharacter {
     var weight: Int
     var height: Double
     var weapon: String
+    
+    func move(x: Double, y: Double) {
+        print("Moving x direction: \(x)")
+        print("Moving y direction: \(y)")
+    }
 }
 
 struct Planet {
