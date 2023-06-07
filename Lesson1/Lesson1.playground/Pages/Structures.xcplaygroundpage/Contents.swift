@@ -74,3 +74,39 @@ let temp2 = Temperature(farenheit: 82.8)
 print(temp.celsius)
 print(temp2.celsius)
 
+// Create 2 structs representing game objects and initialize them inside a gameLoop function
+struct Position {
+    var x: Double
+    var y: Double
+}
+
+struct PlayerCharacter {
+    var name: String
+    var position: Position
+    var weight: Int
+    var height: Double
+    var weapon: String
+}
+
+struct Planet {
+    var name: String
+    var distanceFromEarth: Double
+    var gravity: Double
+}
+
+struct Game {
+    var mainCharacter: PlayerCharacter
+    var planet: Planet
+    
+    func gameLoop() {
+        print("Game starting...")
+    }
+}
+
+var newPosition = Position(x: 0.0, y: 0.0)
+var newCharacter = PlayerCharacter(name: "Jordy", position: newPosition, weight: 103, height: 1.85, weapon: "Axe")
+var newPlanet = Planet(name: "Pluto", distanceFromEarth: 7500000000, gravity: 0.62)
+var newGame = Game(mainCharacter: newCharacter, planet: newPlanet)
+
+print(newGame)
+
