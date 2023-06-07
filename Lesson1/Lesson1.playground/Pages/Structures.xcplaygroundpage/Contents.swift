@@ -100,6 +100,8 @@ struct Game {
     
     func gameLoop() {
         print("Game starting...")
+        print(mainCharacter)
+        print(planet)
     }
 }
 
@@ -109,4 +111,5 @@ var newPlanet = Planet(name: "Pluto", distanceFromEarth: 7500000000, gravity: 0.
 var newGame = Game(mainCharacter: newCharacter, planet: newPlanet)
 
 print(newGame)
+newGame.gameLoop()
 
