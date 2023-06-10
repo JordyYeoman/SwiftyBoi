@@ -3,6 +3,9 @@ import Foundation
 // Goals with this lesson
 // 1. Be able to explain the difference between Structs and Classes in Swift.
 // 2. Better understanding of Struct instance methods
+// 3. Computed Properties
+// 4. Property Observers
+// 5. Accessing type properties + type methods
 
 struct Monster {
     var health: Int = 5 // Init with default value - eg 'All monsters start with 5 health'
@@ -61,3 +64,31 @@ game.lives = 10
 
 
 // Type properties and methods
+// Useful when a property is related to a type, but not a characteristic of the instance itself
+
+// eg -
+struct Temp {
+    static var boilingPoint = 100
+}
+
+// Access type properties using the dot notation
+
+// A good example of the dot notation type method, is with a double.
+var x = Double.maximum(100, 200)
+
+
+// Structs by default are pass by value! Meaning they are copied when assigned to a new variable or
+// an instance is passed into a function
+
+struct Monsta {
+    var name: String
+    var power: Double
+}
+
+var m = Monsta(name: "Lawyer", power: 23.2)
+var z = m
+
+m.power = 29.1
+print(m) // Since Monsta has been passed by value, a copy is assigned and therefore the power property has not been updated on the z assigned instance.
+print(z)
+
