@@ -128,3 +128,21 @@ enum SendIt: String, CaseIterable {
 SendIt.allCases.forEach { sendIt in
     print(sendIt.rawValue)
 }
+
+// 1. Create, add and utilise each of the following complext types - array, tuple, set, dictionary
+
+// Array
+var t: Array<String> = ["Name", "Age"]
+print(t)
+
+// Tuple
+var e = (Age: 22, isHappy: true)
+print(e)
+
+// Set
+var testSet: Set<String> = ["Name", "Age"]
+print(testSet)
+
+// Dictionary
+var testDic: Dictionary<Int, String> = ([1: "Jordy", 2: "Amara", 3: "Layla"])
+print(testDic)
