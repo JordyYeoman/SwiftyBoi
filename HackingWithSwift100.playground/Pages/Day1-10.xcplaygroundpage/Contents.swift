@@ -150,7 +150,23 @@ print(testDic)
 
 // Operator overload
 // You can plus arrays together? :O
-let names = ["Jordy", "River", "Amara"]
-let pets = ["Layla", "Fishies"]
+var names: [String] = ["Jordy", "River", "Amara"]
+let pets: [String] = ["Layla", "Fishies"]
 
-let family = names + pets
+let family = names + pets // operator overload for + to merge 2 arrays
+let fam2: () = names.append(contentsOf: pets) // Alternative for combining arrays
+print(fam2)
+
+
+let testNum1 = 10
+let testNum2 = 12
+// Basic if statements
+if testNum1 < testNum2 {
+    print("Send it")
+}
+
+// Ternary operator
+let bigDog = 12
+
+var isBigDog = bigDog > 10 ? "Yo Im a big dawggg" : "Tiny dawg"
+print(isBigDog)
