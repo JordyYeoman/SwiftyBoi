@@ -170,3 +170,46 @@ let bigDog = 12
 
 var isBigDog = bigDog > 10 ? "Yo Im a big dawggg" : "Tiny dawg"
 print(isBigDog)
+
+var weather = "sunny"
+
+switch weather {
+case "rain":
+    print("Wear a rain jacket")
+case "sunny":
+    print("Wear sunscreen")
+    // fallthrough // we can add the fallthrough keyword to continue down through other cases in the block.
+    // by default, swift returns from a switch block
+case "cold":
+    print("Rug up for some cold weather")
+default:
+    print("Have an epic day you legend!")
+}
+
+
+
+// Range operator - ..> & ...
+// ..> up to but excluding the final value
+// ... all values
+let testRange = [1,2,3,4,5,6,7,8,9,10]
+for t in testRange {
+    print("value is \(t)")
+}
+
+//  for t in 0...10 {
+//      print(testRange[t]) // Error - out of range
+//  }
+
+// Including final value
+for t in 0...testRange.count {
+    print("Hello \(t)")
+}
+
+// Excluding final value
+for t in 0..<testRange.count {
+    print("Hello \(t)")
+}
+
+// Shorthand way to write without knowing the final index
+// Safe because swift automagically knows the end of the array
+print(testRange[1...])
