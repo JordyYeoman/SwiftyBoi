@@ -146,3 +146,11 @@ print(testSet)
 // Dictionary
 var testDic: Dictionary<Int, String> = ([1: "Jordy", 2: "Amara", 3: "Layla"])
 print(testDic)
+
+
+// Operator overload
+// You can plus arrays together? :O
+let names = ["Jordy", "River", "Amara"]
+let pets = ["Layla", "Fishies"]
+
+let family = names + pets
