@@ -59,3 +59,5 @@ let sleightOfHand = {
 // Calling the function by passing in the closure
 doSomethingMagical(action: sleightOfHand)
 
+// Understanding why and when to use closures in swift??
+// It seems as though a good building block of lego pieces that can be used to be passed around
