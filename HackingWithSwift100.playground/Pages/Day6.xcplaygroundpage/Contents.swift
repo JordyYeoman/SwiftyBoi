@@ -63,5 +63,19 @@ print(jordy.strength)
 let river = BigOrse(strength: 1)
 print(river.strength)
 // river.goGym() - error: cannot use mutating member on immutable value
-// Cannot call a mutating method on a struct assigned to a constant variable. 
+// Cannot call a mutating method on a struct assigned to a constant variable.
+
+
+// Why do we want an init here?
+struct Person {
+    private var id: String
+    
+    init(id: String) {
+        self.id = id
+    }
+}
+
+let ed = Person(id: "12345")
+// Using the private keyword, we can no longer override the id property
+//ed.id = "123" // Error - id is inaccessble
 
