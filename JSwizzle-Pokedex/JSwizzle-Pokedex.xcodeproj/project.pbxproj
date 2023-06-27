@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D2696602A4AED4400948953 /* PokemonImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D26965F2A4AED4400948953 /* PokemonImage.swift */; };
+		9D2696642A4AF3F500948953 /* PokemonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2696632A4AF3F500948953 /* PokemonCard.swift */; };
 		9D64FA942A49C613003CFC91 /* PokemonSelected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D64FA932A49C613003CFC91 /* PokemonSelected.swift */; };
 		9D8379AE2A48260B00CF355A /* JSwizzle_PokedexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8379AD2A48260B00CF355A /* JSwizzle_PokedexApp.swift */; };
 		9D8379B02A48260B00CF355A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8379AF2A48260B00CF355A /* ContentView.swift */; };
@@ -33,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9D26965F2A4AED4400948953 /* PokemonImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonImage.swift; sourceTree = "<group>"; };
+		9D2696632A4AF3F500948953 /* PokemonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCard.swift; sourceTree = "<group>"; };
 		9D64FA932A49C613003CFC91 /* PokemonSelected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSelected.swift; sourceTree = "<group>"; };
 		9D8379AA2A48260B00CF355A /* JSwizzle-Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JSwizzle-Pokedex.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8379AD2A48260B00CF355A /* JSwizzle_PokedexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSwizzle_PokedexApp.swift; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 			isa = PBXGroup;
 			children = (
 				9D8379AF2A48260B00CF355A /* ContentView.swift */,
+				9D2696632A4AF3F500948953 /* PokemonCard.swift */,
+				9D26965F2A4AED4400948953 /* PokemonImage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -255,6 +261,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D8379B02A48260B00CF355A /* ContentView.swift in Sources */,
+				9D2696642A4AF3F500948953 /* PokemonCard.swift in Sources */,
+				9D2696602A4AED4400948953 /* PokemonImage.swift in Sources */,
 				9D8379AE2A48260B00CF355A /* JSwizzle_PokedexApp.swift in Sources */,
 				9D64FA942A49C613003CFC91 /* PokemonSelected.swift in Sources */,
 				9D8379DA2A48271500CF355A /* Pokemon.swift in Sources */,
