@@ -8,6 +8,8 @@ struct ListView: View {
                 .scaledToFit()
                 .frame(height: 80)
                 .cornerRadius(4)
+            Text("Big Dog")
+                .fontWeight(.bold)
         }
     }
 }
