@@ -48,3 +48,7 @@ struct PokedexItem: Hashable, Codable {
     var type: [String]
     var base: BaseStats
 }
+
+struct JSONData: Decodable {
+    let pokedexList: [PokedexItem]
+}
