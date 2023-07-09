@@ -27,8 +27,7 @@ struct ContentView: View {
             Spacer()
         }
         .onAppear {
-            var x = loadJson(filename: "pokedex")
-            print("x", x)
+            pokedexList = loadJson(filename: "pokedex") ?? []
         }
         .padding()
     }
