@@ -26,21 +26,26 @@ struct ContentView: View {
             
             Spacer()
         }
-        .onAppear(perform: readFile)
+        .onAppear {
+            var x = loadJson(filename: "pokedex")
+            print("x", x)
+        }
         .padding()
     }
     
-    private func readFile() {
+    private func loadJson(filename fileName: String) -> [PokedexItem]? {
         print("Read file Function called!!")
-        if let url = Bundle.main.url(forResource: "pokedex", withExtension: "json"),
-           let data = try? Data(contentsOf: url) {
-            let decoder = JSONDecoder()
-            if let jsonData = try? decoder.decode(JSONData.self, from: data) {
-                // TODO: Still not able to read json file data
-                print(jsonData.pokedexList)
-                self.pokedexList = jsonData.pokedexList
+        if let url = Bundle.main.url(forResource: fileName, withExtension: "json") {
+            do {
+                let data = try Data(contentsOf: url)
+                let decoder = JSONDecoder()
+                let jsonData = try decoder.decode(JSONData.self, from: data)
+                return jsonData.pokedexList
+            } catch {
+                print("error:\(error)")
             }
         }
+        return nil
     }
 }
 
