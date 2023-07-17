@@ -39,9 +39,10 @@ struct ContentView: View {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
                 let jsonData = try decoder.decode(JSONData.self, from: data)
+                print(jsonData)
                 return jsonData.pokedexList
             } catch {
-                print("error:\(error)")
+                print("error happened bra:\(error)")
             }
         }
         return nil
