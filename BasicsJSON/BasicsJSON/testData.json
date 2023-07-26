@@ -18,5 +18,10 @@
         "name": "Susan",
         "designation": "CEO",
         "email": "susan@gmail.com"
+    },
+    {
+        "name": "Jordy",
+        "designation": "Pseudo Dev",
+        "email": "sendit@now.com.au"
     }
 ]

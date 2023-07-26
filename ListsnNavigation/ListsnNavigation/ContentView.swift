@@ -38,12 +38,15 @@ struct ContentView: View {
             do {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
-                let jsonData = try decoder.decode(JSONData.self, from: data)
-                print(jsonData)
-                return jsonData.pokedexList
+                print(data)
+                let pokedexList = try decoder.decode([PokedexItem].self, from: data)
+                print(pokedexList)
+                return pokedexList
             } catch {
                 print("error happened bra:\(error)")
             }
+        } else {
+            print("Json file not found file:  \(fileName)")
         }
         return nil
     }

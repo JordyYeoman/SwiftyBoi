@@ -23,7 +23,7 @@ struct ContentView: View {
                 HStack{
                     Text(user.designation)
                         .font(.title3)
-                        .foregroundColor(Color.red)
+                        .foregroundColor(Color.blue)
                     
                     Spacer()
                     Text(user.email)
