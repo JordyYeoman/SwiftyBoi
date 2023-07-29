@@ -13,13 +13,34 @@ struct ContentView: View {
     
     var body: some View {
         VStack(spacing: 10){
-            Circle()
-                .foregroundColor(.secondary)
-                .frame(width: 120, height: 120)
+            HStack {
+                VStack {
+                    Circle()
+                        .foregroundColor(.secondary)
+                        .frame(width: 20, height: 20)
+                    Spacer()
+                }
+                Spacer()
+                Circle()
+                    .foregroundColor(.secondary)
+                    .frame(width: 120, height: 120)
+                Spacer()
+                VStack {
+                    Text("Lv.91")
+                        .bold()
+                        .font(.caption)
+                    Spacer()
+                }
+            }
+            .frame(width: .infinity, height: 130, alignment: .leading)
             
-            Text("Username")
+            
+            Text("Pokemon Name")
                 .bold()
                 .font(.title3)
+            
+            Text("This is where the description of the pokemon stats.")
+                .padding()
             
             Text("This is where the description of the pokemon stats.")
                 .padding()
