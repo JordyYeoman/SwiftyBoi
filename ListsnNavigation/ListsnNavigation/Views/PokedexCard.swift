@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct PokedexCard: View {
     
     @State private var pokedexList: [PokedexItem] = []
     
@@ -32,7 +32,8 @@ struct ContentView: View {
                     Spacer()
                 }
             }
-            .frame(width: .infinity, height: 130, alignment: .leading)
+            .frame(width: UIScreen.main.bounds.width - 40, height: 130, alignment: .leading)
+            .padding(20)
             
             
             Text("Pokemon Name")
@@ -47,34 +48,12 @@ struct ContentView: View {
             
             Spacer()
         }
-        .onAppear {
-            pokedexList = loadJson(filename: "pokedex") ?? []
-        }
         .padding()
-    }
-    
-    private func loadJson(filename fileName: String) -> [PokedexItem]? {
-        print("Read file Function called!!")
-        if let url = Bundle.main.url(forResource: fileName, withExtension: "json") {
-            do {
-                let data = try Data(contentsOf: url)
-                let decoder = JSONDecoder()
-                print(data)
-                let pokedexList = try decoder.decode([PokedexItem].self, from: data)
-                print(pokedexList)
-                return pokedexList
-            } catch {
-                print("error happened bra:\(error)")
-            }
-        } else {
-            print("Json file not found file:  \(fileName)")
-        }
-        return nil
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        PokedexCard()
     }
 }

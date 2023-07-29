@@ -28,6 +28,7 @@ struct ContentView: View {
                     Spacer()
                     Text(user.email)
                         .font(.title3)
+                        .foregroundColor(.gray)
                 }
             }
         }

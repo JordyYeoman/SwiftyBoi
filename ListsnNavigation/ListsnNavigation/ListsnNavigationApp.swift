@@ -11,7 +11,7 @@ import SwiftUI
 struct ListsnNavigationApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PokeDexList()
         }
     }
 }
