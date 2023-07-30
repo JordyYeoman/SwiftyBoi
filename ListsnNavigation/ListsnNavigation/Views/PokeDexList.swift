@@ -17,21 +17,35 @@ struct PokeDexList: View {
                     VStack {
                         Rectangle()
                             .foregroundColor(.secondary)
-                            .frame(width: 40, height: 40)
+                            .frame(width: 50, height: 50)
                             .padding(.top, 1)
+                            .cornerRadius(4)
                         Text("Type: \(pokedexItem.type[0])")
                             .foregroundColor(.gray)
                             .fontWeight(.bold)
-                            .font(.caption2)
+                            .font(.custom("teeny", fixedSize: 10))
                     }
+                    .frame(width: 60)
                     
                     VStack(alignment: .leading) {
                         Text("\(pokedexItem.name.english)")
                             .font(.title3)
                             .fontWeight(.semibold)
                             .padding(.bottom, 1)
-                        Text("Attk: \(pokedexItem.base.attack)")
-                            .font(.caption2)
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("Attk: \(pokedexItem.base.attack)")
+                                    .font(.caption2)
+                                Text("Defense: \(pokedexItem.base.defense)")
+                                    .font(.caption2)
+                            }
+                            VStack(alignment: .leading) {
+                                Text("HP: \(pokedexItem.base.hp)")
+                                    .font(.caption2)
+                                Text("Speed: \(pokedexItem.base.speed)")
+                                    .font(.caption2)
+                            }
+                        }
                     }
                     .padding()
                 }
