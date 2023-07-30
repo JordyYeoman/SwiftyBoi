@@ -12,6 +12,7 @@
 		9DFCC78D2A7521B000EB6311 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCC78C2A7521B000EB6311 /* Preview Assets.xcassets */; };
 		9DFCC7B02A75222800EB6311 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCC7AF2A75222800EB6311 /* Assets.xcassets */; };
 		9DFCC7B42A75226800EB6311 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCC7B32A75226800EB6311 /* Video.swift */; };
+		9DFCC7B82A75FE7700EB6311 /* VideoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCC7B72A75FE7700EB6311 /* VideoDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		9DFCC79C2A7521B000EB6311 /* List-StarterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "List-StarterUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DFCC7AF2A75222800EB6311 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../../../Desktop/SwiftUI-List-Starter/SwiftUI-List-Starter/Assets.xcassets"; sourceTree = "<group>"; };
 		9DFCC7B32A75226800EB6311 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		9DFCC7B72A75FE7700EB6311 /* VideoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				9DFCC7872A7521B000EB6311 /* VideoListView.swift */,
 				9DFCC7AF2A75222800EB6311 /* Assets.xcassets */,
 				9DFCC78B2A7521B000EB6311 /* Preview Content */,
+				9DFCC7B72A75FE7700EB6311 /* VideoDetailView.swift */,
 			);
 			path = "List-Starter";
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DFCC7882A7521B000EB6311 /* VideoListView.swift in Sources */,
+				9DFCC7B82A75FE7700EB6311 /* VideoDetailView.swift in Sources */,
 				9DFCC7B42A75226800EB6311 /* Video.swift in Sources */,
 				9DFCC7862A7521B000EB6311 /* List_StarterApp.swift in Sources */,
 			);
