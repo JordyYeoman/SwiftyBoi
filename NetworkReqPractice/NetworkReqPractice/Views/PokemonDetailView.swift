@@ -13,6 +13,15 @@ struct PokemonDetailView: View {
     let pokemon: Pokemon
     
     var body: some View {
+        VStack(alignment: .leading) {
+            Circle()
+                .fill(.red)
+                .frame(width: UIScreen.main.bounds.width * 2, height: UIScreen.main.bounds.height / 3)
+                .border(.red)
+                .foregroundColor(.clear)
+                .offset(x: 0, y: -400)
+        }
+        
         VStack {
             PokemonView(pokemon: pokemon)
             VStack(spacing: 10) {

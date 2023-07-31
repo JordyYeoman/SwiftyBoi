@@ -16,8 +16,17 @@ struct PokemonView: View {
     var body: some View {
         VStack {
             AsyncImage(url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(vm.getPokemonId(pokemon: pokemon)).png")) { image in
-                
+                image.resizable()
+            } placeholder: {
+                ProgressView()
             }
+            .frame(width: dimensions, height: dimensions)
+            .background(.thinMaterial)
+            .cornerRadius(8)
+            
+            Text("\(pokemon.name.capitalized)")
+                .font(.system(size: 16, weight: .regular, design: .monospaced))
+                .padding(.bottom, 16)
         }
     }
 }
