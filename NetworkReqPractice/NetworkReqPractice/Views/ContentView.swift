@@ -20,8 +20,9 @@ struct ContentView: View {
                 LazyVGrid(columns: adaptiveColumns, spacing: 10) {
                     ForEach(vm.filteredPokemon) { pokemon in
                         NavigationLink(destination: PokemonDetailView(pokemon: pokemon)) {
-                            PokemonView(pokemon: pokemon)
+                            PokemonView(dimensions: 140, pokemon: pokemon)
                                 .navigationTitle("Pokedex")
+                                .navigationBarTitleDisplayMode(.inline)
                         }
                     }
                 }

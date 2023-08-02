@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct PokemonView: View {
+    var dimensions: Double
     
     @EnvironmentObject var vm: PokemonViewModel
     let pokemon: Pokemon
-    let dimensions: Double = 140
     
     var body: some View {
         VStack {
@@ -23,17 +23,13 @@ struct PokemonView: View {
             .frame(width: dimensions, height: dimensions)
             .background(.thinMaterial)
             .cornerRadius(8)
-            
-            Text("\(pokemon.name.capitalized)")
-                .font(.system(size: 16, weight: .regular, design: .monospaced))
-                .padding(.bottom, 16)
         }
     }
 }
 
 struct PokemonView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonView(pokemon: Pokemon.samplePokemon)
+        PokemonView(dimensions: 140, pokemon: Pokemon.samplePokemon)
             .environmentObject(PokemonViewModel())
     }
 }
