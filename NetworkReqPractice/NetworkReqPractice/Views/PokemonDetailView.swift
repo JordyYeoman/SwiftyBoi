@@ -39,6 +39,7 @@ struct PokemonDetailView: View {
                     // Right Arrow
                     ArrowView(direction: "right")
                         .padding(.trailing, wallSpacing)
+                        .environmentObject(vm)
                 }
                 .padding(.bottom, 20)
                 
@@ -116,6 +117,7 @@ struct BackgroundCircleOverlay: View {
 }
 
 struct ArrowView: View {
+    @EnvironmentObject var vm: PokemonViewModel
     var direction: String
     
     var body: some View {
@@ -131,5 +133,9 @@ struct ArrowView: View {
                 .foregroundColor(.white)
                 .font(.system(size: 30.0))
         }
+//        .onTapGesture {
+//            print("Hello sir: \(vm.pokemonIndex)")
+//            vm.updatePokemonIndex(updateBy: 1)
+//        }
     }
 }
