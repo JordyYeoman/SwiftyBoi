@@ -27,20 +27,16 @@ final class PokemonViewModel: ObservableObject {
     }
     
     func updatePokemonIndex(updateBy: Int) {
-        DispatchQueue.main.async {
-            print("updateBy: \(updateBy)")
-            print("pokemonIndex: \(self.pokemonIndex)")
-//            self.pokemonIndex += updateBy
-            self.pokemonIndex = 23
+        let newIndex = pokemonIndex + updateBy
+        if newIndex >= 0 && newIndex < pokemonList.count {
+            pokemonIndex = newIndex
         }
     }
     
     func getPokemonId(pokemon: Pokemon) -> Int {
-        print("Getting pokemon index")
+//        print("Getting pokemin id")
+        
         if let index = self.pokemonList.firstIndex(of: pokemon) {
-            DispatchQueue.main.async {
-                self.pokemonIndex = index + 1
-            }
             return index + 1
         }
         return 0

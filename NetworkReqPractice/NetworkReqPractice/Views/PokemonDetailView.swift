@@ -119,6 +119,10 @@ struct BackgroundCircleOverlay: View {
 struct ArrowView: View {
     @EnvironmentObject var vm: PokemonViewModel
     var direction: String
+    var z: Int {
+        print("direction: \(direction)")
+        return direction == "left" ? -1 : 1
+    }
     
     var body: some View {
         ZStack {
@@ -133,9 +137,9 @@ struct ArrowView: View {
                 .foregroundColor(.white)
                 .font(.system(size: 30.0))
         }
-//        .onTapGesture {
-//            print("Hello sir: \(vm.pokemonIndex)")
-//            vm.updatePokemonIndex(updateBy: 1)
-//        }
+        .onTapGesture {
+            print("Hello sir: \(vm.pokemonIndex)")
+            vm.updatePokemonIndex(updateBy: 1)
+        }
     }
 }
