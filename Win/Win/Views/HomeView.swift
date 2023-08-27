@@ -21,6 +21,7 @@ struct HomeView: View {
         }
         .onAppear {
             manager.fetchTodaySteps()
+            manager.fetchHR()
         }
     }
 }

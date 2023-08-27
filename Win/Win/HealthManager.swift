@@ -47,4 +47,16 @@ class HealthManager: ObservableObject {
         
         healthStore.execute(query)
     }
+    
+    // TODO
+//    func fetchHR() {
+//        let heartData = HKQuantityType(.heartRate)
+//        let predicate = HKQuery.predicateForSamples(withStart: .startOfDay, end: Date())
+//        let query = HKStatisticsQuery(quantityType: heartData) { _, result, error in
+//
+//            print("Result of HR: \(result)")
+//        }
+//
+//        healthStore.execute(query)
+//    }
 }
