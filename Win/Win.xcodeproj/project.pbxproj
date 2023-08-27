@@ -11,6 +11,10 @@
 		9D7CC08E2A99E16700CB296B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7CC08D2A99E16700CB296B /* ContentView.swift */; };
 		9D7CC0902A99E16700CB296B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D7CC08F2A99E16700CB296B /* Assets.xcassets */; };
 		9D7CC0942A99E16700CB296B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D7CC0932A99E16700CB296B /* Preview Assets.xcassets */; };
+		9D7D8BCC2A9AE0C000AD9BEA /* ActivityTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D8BCB2A9AE0C000AD9BEA /* ActivityTabView.swift */; };
+		9D7D8BCE2A9AE16F00AD9BEA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D8BCD2A9AE16F00AD9BEA /* HomeView.swift */; };
+		9D7D8BD12A9AE1FB00AD9BEA /* ActivityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D8BD02A9AE1FB00AD9BEA /* ActivityCard.swift */; };
+		9D7D8BD32A9AE91D00AD9BEA /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D8BD22A9AE91D00AD9BEA /* HealthManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +24,11 @@
 		9D7CC08F2A99E16700CB296B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D7CC0912A99E16700CB296B /* Win.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Win.entitlements; sourceTree = "<group>"; };
 		9D7CC0932A99E16700CB296B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9D7D8BCB2A9AE0C000AD9BEA /* ActivityTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTabView.swift; sourceTree = "<group>"; };
+		9D7D8BCD2A9AE16F00AD9BEA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9D7D8BD02A9AE1FB00AD9BEA /* ActivityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCard.swift; sourceTree = "<group>"; };
+		9D7D8BD22A9AE91D00AD9BEA /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
+		9D7D8BD42A9AEFBB00AD9BEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,11 +61,13 @@
 		9D7CC08A2A99E16700CB296B /* Win */ = {
 			isa = PBXGroup;
 			children = (
+				9D7D8BD42A9AEFBB00AD9BEA /* Info.plist */,
+				9D7D8BCF2A9AE17500AD9BEA /* Views */,
 				9D7CC08B2A99E16700CB296B /* WinApp.swift */,
-				9D7CC08D2A99E16700CB296B /* ContentView.swift */,
 				9D7CC08F2A99E16700CB296B /* Assets.xcassets */,
 				9D7CC0912A99E16700CB296B /* Win.entitlements */,
 				9D7CC0922A99E16700CB296B /* Preview Content */,
+				9D7D8BD22A9AE91D00AD9BEA /* HealthManager.swift */,
 			);
 			path = Win;
 			sourceTree = "<group>";
@@ -67,6 +78,17 @@
 				9D7CC0932A99E16700CB296B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9D7D8BCF2A9AE17500AD9BEA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9D7CC08D2A99E16700CB296B /* ContentView.swift */,
+				9D7D8BCB2A9AE0C000AD9BEA /* ActivityTabView.swift */,
+				9D7D8BCD2A9AE16F00AD9BEA /* HomeView.swift */,
+				9D7D8BD02A9AE1FB00AD9BEA /* ActivityCard.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,7 +162,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D7CC08E2A99E16700CB296B /* ContentView.swift in Sources */,
+				9D7D8BD32A9AE91D00AD9BEA /* HealthManager.swift in Sources */,
+				9D7D8BCE2A9AE16F00AD9BEA /* HomeView.swift in Sources */,
 				9D7CC08C2A99E16700CB296B /* WinApp.swift in Sources */,
+				9D7D8BCC2A9AE0C000AD9BEA /* ActivityTabView.swift in Sources */,
+				9D7D8BD12A9AE1FB00AD9BEA /* ActivityCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +295,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Win/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow access to enjoy all the features of application";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -307,6 +335,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Win/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow access to enjoy all the features of application";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
