@@ -13,12 +13,11 @@ struct Activity {
     let subTitle: String
     let image: String
     let amount: String
+    let percentComplete: String
 }
 
 struct ActivityCard: View {
     @State var activity: Activity
-    
-    var percentComplete = 87
     
     var body: some View {
         ZStack {
@@ -37,10 +36,10 @@ struct ActivityCard: View {
                     
                     Spacer()
                     
-                    VStack(alignment: .trailing) {
+                    VStack(alignment: .trailing, spacing: 5) {
                         Image(systemName: activity.image)
                             .foregroundColor(.green)
-                        Text("\(percentComplete)%")
+                        Text("\(activity.percentComplete)%")
                             .font(.system(size: 12))
                             .foregroundColor(.gray)
                     }
@@ -57,6 +56,6 @@ struct ActivityCard: View {
 
 struct ActivityCard_Previews: PreviewProvider {
     static var previews: some View {
-        ActivityCard(activity: Activity(id: 0, title: "Daily Steps", subTitle: "Goal: 10,000", image: "figure.walk", amount: "6,543"))
+        ActivityCard(activity: Activity(id: 0, title: "Daily Steps", subTitle: "Goal: 10,000", image: "figure.walk", amount: "6,543", percentComplete: "\((6543/10000) * 100)"))
     }
 }

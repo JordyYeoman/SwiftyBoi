@@ -17,6 +17,8 @@ extension Date {
 class HealthManager: ObservableObject {
     let healthStore = HKHealthStore()
     
+    @Published var activaties: [String: Activity] = [:]
+    
     init() {
         let steps = HKQuantityType(.stepCount)
         let heartRate = HKQuantityType(.heartRate)
@@ -42,6 +44,9 @@ class HealthManager: ObservableObject {
             }
             
             let stepCount = quantity.doubleValue(for: .count())
+            let goal = 10000.0
+            
+            let activity = Activity(id: 0, title: "Todays Steps", subTitle: "Goal - \(goal)", image: "figure.walk", amount: "\(stepCount)", percentComplete: "\(String(format: "%.2f", (stepCount/goal) * 100))")
             print("StepCount: \(stepCount)")
         }
         

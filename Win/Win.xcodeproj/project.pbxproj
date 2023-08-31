@@ -15,6 +15,7 @@
 		9D7D8BCE2A9AE16F00AD9BEA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D8BCD2A9AE16F00AD9BEA /* HomeView.swift */; };
 		9D7D8BD12A9AE1FB00AD9BEA /* ActivityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D8BD02A9AE1FB00AD9BEA /* ActivityCard.swift */; };
 		9D7D8BD32A9AE91D00AD9BEA /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D8BD22A9AE91D00AD9BEA /* HealthManager.swift */; };
+		9DAA9AEE2AA0AB6E00A2AC58 /* HeartRateZones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAA9AED2AA0AB6E00A2AC58 /* HeartRateZones.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		9D7D8BD02A9AE1FB00AD9BEA /* ActivityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCard.swift; sourceTree = "<group>"; };
 		9D7D8BD22A9AE91D00AD9BEA /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		9D7D8BD42A9AEFBB00AD9BEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9DAA9AED2AA0AB6E00A2AC58 /* HeartRateZones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateZones.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				9D7D8BCB2A9AE0C000AD9BEA /* ActivityTabView.swift */,
 				9D7D8BCD2A9AE16F00AD9BEA /* HomeView.swift */,
 				9D7D8BD02A9AE1FB00AD9BEA /* ActivityCard.swift */,
+				9DAA9AED2AA0AB6E00A2AC58 /* HeartRateZones.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 			files = (
 				9D7CC08E2A99E16700CB296B /* ContentView.swift in Sources */,
 				9D7D8BD32A9AE91D00AD9BEA /* HealthManager.swift in Sources */,
+				9DAA9AEE2AA0AB6E00A2AC58 /* HeartRateZones.swift in Sources */,
 				9D7D8BCE2A9AE16F00AD9BEA /* HomeView.swift in Sources */,
 				9D7CC08C2A99E16700CB296B /* WinApp.swift in Sources */,
 				9D7D8BCC2A9AE0C000AD9BEA /* ActivityTabView.swift in Sources */,
