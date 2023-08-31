@@ -15,11 +15,16 @@
 
 import SwiftUI
 
-struct Zone: Identifiable {
+struct ZoneData: Hashable, Identifiable {
     var id = UUID()
     var maxHR: Int
-    var limit: Int {
-        return maxHR * percentage / 100
+    var lowerPercent: Int
+    var upperPercent: Int
+    var lowerLimit: Int {
+        return maxHR * lowerPercent / 100
+    }
+    var upperLimit: Int {
+        return maxHR * upperPercent / 100
     }
 }
 
@@ -30,7 +35,11 @@ struct HeartRateZones: View {
     }
     
     var heartRateZones = [
-        Zone(
+        ZoneData(maxHR: 198, lowerPercent: 50, upperPercent: 60),
+        ZoneData(maxHR: 198, lowerPercent: 60, upperPercent: 70),
+        ZoneData(maxHR: 198, lowerPercent: 70, upperPercent: 80),
+        ZoneData(maxHR: 198, lowerPercent: 80, upperPercent: 90),
+        ZoneData(maxHR: 198, lowerPercent: 90, upperPercent: 100),
     ]
     
     
@@ -44,13 +53,8 @@ struct HeartRateZones: View {
             }
             
             ForEach(heartRateZones, id: \.self) { zone in
-                           Text("Zone \(zone)")
-                       }
-            Zone(lower: 0, upper: 50)
-            Zone(lower: 50, upper: 80)
-            Zone(lower: 80, upper: 105)
-            Zone(lower: 80, upper: 105)
-            Zone(lower: 80, upper: 105)
+                Zone(lower: zone.lowerLimit, upper: zone.upperLimit)
+            }
         }
         .padding(.horizontal, 15)
     }
