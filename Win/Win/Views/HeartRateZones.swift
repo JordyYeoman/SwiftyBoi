@@ -20,6 +20,7 @@ struct ZoneData: Hashable, Identifiable {
     var maxHR: Int
     var lowerPercent: Int
     var upperPercent: Int
+    var color: Color
     var lowerLimit: Int {
         return maxHR * lowerPercent / 100
     }
@@ -35,11 +36,11 @@ struct HeartRateZones: View {
     }
     
     var heartRateZones = [
-        ZoneData(maxHR: 198, lowerPercent: 50, upperPercent: 60),
-        ZoneData(maxHR: 198, lowerPercent: 60, upperPercent: 70),
-        ZoneData(maxHR: 198, lowerPercent: 70, upperPercent: 80),
-        ZoneData(maxHR: 198, lowerPercent: 80, upperPercent: 90),
-        ZoneData(maxHR: 198, lowerPercent: 90, upperPercent: 100),
+        ZoneData(maxHR: 198, lowerPercent: 90, upperPercent: 100, color: Color.red),
+        ZoneData(maxHR: 198, lowerPercent: 80, upperPercent: 90, color: Color.orange),
+        ZoneData(maxHR: 198, lowerPercent: 70, upperPercent: 80, color: Color.yellow),
+        ZoneData(maxHR: 198, lowerPercent: 60, upperPercent: 70, color: Color.blue),
+        ZoneData(maxHR: 198, lowerPercent: 50, upperPercent: 60, color: Color.green), 
     ]
     
     
@@ -52,9 +53,23 @@ struct HeartRateZones: View {
                 Spacer()
             }
             
-            ForEach(heartRateZones, id: \.self) { zone in
-                Zone(lower: zone.lowerLimit, upper: zone.upperLimit)
+            ZStack {
+                Color.purple
+                    .ignoresSafeArea()
+                
+                VStack(spacing: 0) {
+                    ForEach(heartRateZones, id: \.self) { zone in
+                        Zone(lower: zone.lowerLimit, upper: zone.upperLimit, color: zone.color)
+                    }
+                }
+                
+                Circle()
+                    .fill(.white)
+                    .frame(width: 16, height: 16)
+                    .position(x: 250, y: 45)
+                    .shadow(radius: 2.0)
             }
+            .frame(height: 160)
         }
         .padding(.horizontal, 15)
     }
@@ -63,23 +78,19 @@ struct HeartRateZones: View {
 struct Zone: View {
     var lower: Int
     var upper: Int
+    var color: Color
     
     var body: some View {
         HStack {
             Text("\(lower) / \(upper)")
                 .font(.caption)
                 .bold()
-                .frame(width: 50)
+                .frame(width: 60)
             
-            ZStack {
-                Rectangle()
-                    .frame(width: .infinity, height: 32)
-                    .foregroundColor(Color.blue)
-                    .cornerRadius(10)
-                Circle()
-                    .fill(.red)
-                    .frame(width: 16, height: 16)
-            }
+            Rectangle()
+                .frame(width: .infinity, height: 32)
+                .foregroundColor(color)
+                .padding(0)
         }
     }
 }
