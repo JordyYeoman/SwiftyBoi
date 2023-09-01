@@ -29,8 +29,8 @@ struct HomeView: View {
             Spacer()
         }
         .onAppear {
-//            manager.fetchTodaySteps()
-//            manager.fetchHR()
+            manager.fetchTodaySteps()
+            manager.startHeartRateQuery()
         }
     }
 }
