@@ -32,5 +32,6 @@ struct ActivityTabView: View {
 struct ActivityTabView_Previews: PreviewProvider {
     static var previews: some View {
         ActivityTabView()
+            .environmentObject(HealthManager())
     }
 }

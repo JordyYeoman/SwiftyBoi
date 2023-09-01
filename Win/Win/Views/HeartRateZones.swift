@@ -40,7 +40,7 @@ struct HeartRateZones: View {
         ZoneData(maxHR: 198, lowerPercent: 80, upperPercent: 90, color: Color.orange),
         ZoneData(maxHR: 198, lowerPercent: 70, upperPercent: 80, color: Color.yellow),
         ZoneData(maxHR: 198, lowerPercent: 60, upperPercent: 70, color: Color.blue),
-        ZoneData(maxHR: 198, lowerPercent: 50, upperPercent: 60, color: Color.green), 
+        ZoneData(maxHR: 198, lowerPercent: 50, upperPercent: 60, color: Color.green),
     ]
     
     
@@ -71,7 +71,6 @@ struct HeartRateZones: View {
             }
             .frame(height: 160)
         }
-        .padding(.horizontal, 15)
     }
 }
 
