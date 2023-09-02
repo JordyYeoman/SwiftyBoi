@@ -15,7 +15,7 @@ struct HomeView: View {
             HeartRateZones()
                 .padding(.horizontal)
             
-            SmallActivityCard(activity: SmallActivity(title: "Heart Rate", currentValue: "120", image: "heart.fill"))
+            SmallActivityCard(activity: SmallActivity(title: "Heart Rate", currentValue: "\(120)", image: "heart.fill"))
                 .frame(height: 80)
                 .padding(.all)
             

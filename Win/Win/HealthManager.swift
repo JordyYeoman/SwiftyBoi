@@ -18,7 +18,7 @@ class HealthManager: ObservableObject {
     let healthStore = HKHealthStore()
     
     @Published var activities: [String: Activity] = [:]
-    @Published var currentHR: Int = 0
+    @Published var currentHR: Double = 0.0
     
     init() {
         let steps = HKQuantityType(.stepCount)
@@ -76,6 +76,9 @@ class HealthManager: ObservableObject {
             let unit = HKUnit(from: "count/min")
             let latestHR = data.quantity.doubleValue(for: unit)
             print("Latest Heart Rate: \(latestHR) BPM")
+            
+            // Update the published var
+//            self.currentHR = latestHR
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/mm/yyyy hh:mm s"
