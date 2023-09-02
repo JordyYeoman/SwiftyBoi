@@ -56,5 +56,34 @@ class HealthManager: ObservableObject {
     
     func startHeartRateQuery() {
         print("Starting HR Query")
+        
+        // Create a sample type to use as the query param
+        guard let sampleType = HKObjectType.quantityType(forIdentifier: .heartRate) else {
+            return
+        }
+        // Filter param - the last month
+        let startDate = Calendar.current.date(byAdding: .month, value: -1, to: Date())
+        // Predicate ?? eh?
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: Date())
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+        
+        let query = HKSampleQuery(sampleType: sampleType, predicate: predicate, limit: Int(HKObjectQueryNoLimit), sortDescriptors: [sortDescriptor]) { (sample, result, error) in
+            guard error == nil else {
+                return
+            }
+            // Unsafe force unwrap??
+            let data = result![0] as! HKQuantitySample
+            let unit = HKUnit(from: "count/min")
+            let latestHR = data.quantity.doubleValue(for: unit)
+            print("Latest Heart Rate: \(latestHR) BPM")
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd/mm/yyyy hh:mm s"
+            let startDate = dateFormatter.string(from: data.startDate)
+            let endDate = dateFormatter.string(from: data.endDate)
+            print("Start Date \(startDate) : End Date \(endDate)")
+        }
+        
+        healthStore.execute(query)
     }
 }
