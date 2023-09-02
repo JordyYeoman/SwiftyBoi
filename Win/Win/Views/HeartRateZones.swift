@@ -87,9 +87,9 @@ struct Zone: View {
                 .frame(width: 60)
             
             Rectangle()
-                .frame(width: .infinity, height: 32)
+                .frame(height: 32) // Specify the height only
                 .foregroundColor(color)
-                .padding(0)
+                .edgesIgnoringSafeArea(.horizontal)
         }
     }
 }

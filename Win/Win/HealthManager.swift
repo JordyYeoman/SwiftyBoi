@@ -14,6 +14,16 @@ extension Date {
     }
 }
 
+extension Double {
+    func formattedString() -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.maximumFractionDigits = 0
+        // TODO: Fix unsafe unwrap??
+        return numberFormatter.string(from: NSNumber(value: self))!
+    }
+}
+
 class HealthManager: ObservableObject {
     let healthStore = HKHealthStore()
     
@@ -23,8 +33,9 @@ class HealthManager: ObservableObject {
     init() {
         let steps = HKQuantityType(.stepCount)
         let heartRate = HKQuantityType(.heartRate)
+        let calories = HKQuantityType(.activeEnergyBurned)
         
-        let healthTypes: Set = [steps, heartRate]
+        let healthTypes: Set = [steps, heartRate, calories]
         
         Task {
             do {
@@ -47,8 +58,37 @@ class HealthManager: ObservableObject {
             let stepCount = quantity.doubleValue(for: .count())
             let goal = 10000.0
             
-            let activity = Activity(id: 0, title: "Todays Steps", subTitle: "Goal - \(goal)", image: "figure.walk", amount: "\(stepCount)", percentComplete: "\(String(format: "%.2f", (stepCount/goal) * 100))")
-            print("StepCount: \(stepCount)")
+            let activity = Activity(id: 0, title: "Todays Steps", subTitle: "Goal - \(goal)", image: "figure.walk", amount: stepCount.formattedString(), percentComplete: "\(String(format: "%.2f", (stepCount/goal) * 100))")
+            
+            DispatchQueue.main.async {
+                self.activities["todaySteps"] = activity
+            }
+            
+            print("StepCount: \(stepCount.formattedString())")
+        }
+        
+        healthStore.execute(query)
+    }
+    
+    func fetchTodaysCalories() {
+        let calories = HKQuantityType(.activeEnergyBurned)
+        let predicate = HKQuery.predicateForSamples(withStart: .startOfDay, end: Date())
+        let query = HKStatisticsQuery(quantityType: calories, quantitySamplePredicate: predicate) { _, result, error in
+            guard let quantity = result?.sumQuantity(), error == nil else {
+                print("Error fetching todays calorie data")
+                return
+            }
+            
+            let caloriesBurned = quantity.doubleValue(for: .kilocalorie())
+            let goal = 2500.0 // Who knows what this value should be :D
+            
+            let activity = Activity(id: 0, title: "Todays Calories", subTitle: "Goal - \(goal)", image: "flame", amount: caloriesBurned.formattedString(), percentComplete: "\(String(format: "%.2f", (caloriesBurned/goal) * 100))")
+            
+            DispatchQueue.main.async {
+                self.activities["todayCalories"] = activity
+            }
+            
+            print("CaloriesBurned: \(caloriesBurned.formattedString())")
         }
         
         healthStore.execute(query)
@@ -78,7 +118,9 @@ class HealthManager: ObservableObject {
             print("Latest Heart Rate: \(latestHR) BPM")
             
             // Update the published var
-//            self.currentHR = latestHR
+            DispatchQueue.main.async {
+                self.currentHR = latestHR
+            }
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/mm/yyyy hh:mm s"

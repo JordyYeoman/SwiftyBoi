@@ -9,20 +9,26 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var manager: HealthManager
+    @State private var counter = 0.0
     
     var body: some View {
         VStack {
             HeartRateZones()
                 .padding(.horizontal)
             
+            Text("Testing timer: \(counter)")
+                .onAppear {
+                    startTimer()
+                }
+            
             SmallActivityCard(activity: SmallActivity(title: "Heart Rate", currentValue: "\(120)", image: "heart.fill"))
                 .frame(height: 80)
                 .padding(.all)
             
             LazyVGrid(columns: Array(repeating: GridItem(spacing: 10), count: 2)) {
-                ActivityCard(activity: Activity(id: 0, title: "Daily Steps", subTitle: "Goal: 10,000", image: "figure.walk", amount: "6,543", percentComplete: "\(String(format: "%.2f", (2043.0/10000.0) * 100))"))
-                
-                ActivityCard(activity: Activity(id: 0, title: "Daily Steps", subTitle: "Goal: 10,000", image: "figure.walk", amount: "6,543", percentComplete: "\(String(format: "%.2f", (6543.0/10000.0) * 100))"))
+                ForEach(manager.activities.sorted(by: { $0.value.id < $1.value.id }), id: \.key) { item in
+                    ActivityCard(activity: item.value)
+                }
             }
             .padding(.horizontal)
             
@@ -31,7 +37,22 @@ struct HomeView: View {
         .onAppear {
             manager.fetchTodaySteps()
             manager.startHeartRateQuery()
+            manager.fetchTodaysCalories()
         }
+    }
+    
+    
+    // Function to start the timer
+    private func startTimer() {
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+            updateCounter()
+        }
+    }
+    
+    // Function to update the counter
+    private func updateCounter() {
+        // Update the @State variable to trigger a view update
+        counter += 0.1
     }
 }
 
