@@ -19,9 +19,10 @@ struct HomeView: View {
             Text("Testing timer: \(counter)")
                 .onAppear {
                     startTimer()
+                    cronJobTimer()
                 }
             
-            SmallActivityCard(activity: SmallActivity(title: "Heart Rate", currentValue: "\(120)", image: "heart.fill"))
+            SmallActivityCard(activity: SmallActivity(title: "Heart Rate", currentValue: "\(Int(manager.currentHR))", image: "heart.fill"))
                 .frame(height: 80)
                 .padding(.all)
             
@@ -36,7 +37,7 @@ struct HomeView: View {
         }
         .onAppear {
             manager.fetchTodaySteps()
-            manager.startHeartRateQuery()
+            manager.fetchHR()
             manager.fetchTodaysCalories()
         }
     }
@@ -44,15 +45,23 @@ struct HomeView: View {
     
     // Function to start the timer
     private func startTimer() {
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
             updateCounter()
+            manager.fetchHR()
+        }
+    }
+    
+    private func cronJobTimer() {
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
+            manager.fetchTodaySteps()
+            manager.fetchTodaysCalories()
         }
     }
     
     // Function to update the counter
     private func updateCounter() {
         // Update the @State variable to trigger a view update
-        counter += 0.1
+        counter += 0.5
     }
 }
 

@@ -29,6 +29,7 @@ class HealthManager: ObservableObject {
     
     @Published var activities: [String: Activity] = [:]
     @Published var currentHR: Double = 0.0
+    @Published var isWorkoutActive = false
     
     init() {
         let steps = HKQuantityType(.stepCount)
@@ -40,6 +41,8 @@ class HealthManager: ObservableObject {
         Task {
             do {
                 try await healthStore.requestAuthorization(toShare: [], read: healthTypes)
+                // Check for a mirrored session available?
+                
             } catch {
                 print("Sorry bra, unable to access the health data.")
             }
@@ -94,7 +97,7 @@ class HealthManager: ObservableObject {
         healthStore.execute(query)
     }
     
-    func startHeartRateQuery() {
+    func fetchHR() {
         print("Starting HR Query")
         
         // Create a sample type to use as the query param
@@ -117,7 +120,6 @@ class HealthManager: ObservableObject {
             let latestHR = data.quantity.doubleValue(for: unit)
             print("Latest Heart Rate: \(latestHR) BPM")
             
-            // Update the published var
             DispatchQueue.main.async {
                 self.currentHR = latestHR
             }
@@ -130,5 +132,15 @@ class HealthManager: ObservableObject {
         }
         
         healthStore.execute(query)
+        // TODO: Enable this when we can understand why it is greyed out in capabilities section
+        //        healthStore.enableBackgroundDelivery(for: HKQuantityType.quantityType(forIdentifier: .heartRate)!, frequency: .immediate, withCompletion: { (success, error) in
+        //            if success {
+        //                // Heart rate updates will be delivered in the background
+        //                print("background update Occured: \(success)")
+        //            } else {
+        //                // Handle background delivery error
+        //                print("background update Error:", error ?? "Bra")
+        //            }
+        //        })
     }
 }
