@@ -23,32 +23,32 @@ print("YEEET")
 //    func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
 //        var indexs = [0]
 //        var count = 0
-//        
+//
 //        // Loop over array
 //        for (index, n) in nums.enumerated() {
 //            count += n
 //            indexs = []
 //            indexs.append(index)
-//            
+//
 //            for(innerIndex, k) in nums.enumerated().dropFirst(index + 1) {
 //                count += k
 //                indexs.append(innerIndex)
-//                
+//
 //                if(count > target) {
 //                    count -= k
 //                    indexs.popLast()
 //                }
-//                
+//
 //                if(count == target) {
 //                    return indexs
 //                }
 //            }
-//            
+//
 //            // reset count & indexs
 //            count = 0
 //            indexs = []
 //        }
-//        
+//
 //        return indexs
 //    }
 //}
@@ -60,3 +60,28 @@ print("YEEET")
 //handleSolution.twoSum([3,2,3], 6)
 
 // Solution V2
+
+class Solution {
+    func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
+        // 1. unordered map to store lookups
+        var unorderedMap = [Int: Int]()
+        
+        // Loop over array of nums
+        for (index, value) in nums.enumerated() {
+            if let addent = unorderedMap[value] {
+                return [addent, index]
+            } else {
+                unorderedMap[target - value] = index
+            }
+        }
+        
+        return []
+        
+    }
+}
+
+let handleSolution = Solution()
+handleSolution.twoSum([7,11,1,15,2], 9)
+handleSolution.twoSum([2,7,11,15], 9)
+handleSolution.twoSum([3,2,4], 6)
+handleSolution.twoSum([3,2,3], 6)
