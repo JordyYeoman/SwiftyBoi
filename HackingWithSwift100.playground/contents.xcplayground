@@ -9,5 +9,6 @@
         <page name='Day10'/>
         <page name='Day9'/>
         <page name='ReadingTextFile'/>
+        <page name='YeetCode1-4'/>
     </pages>
 </playground>
