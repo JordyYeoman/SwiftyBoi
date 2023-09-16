@@ -18,8 +18,8 @@ struct HomeView: View {
             
             Text("Testing timer: \(counter)")
                 .onAppear {
-                    startTimer()
-                    cronJobTimer()
+//                    startTimer()
+//                    cronJobTimer()
                 }
             
             SmallActivityCard(activity: SmallActivity(title: "Heart Rate", currentValue: "\(Int(manager.currentHR))", image: "heart.fill"))
@@ -36,9 +36,9 @@ struct HomeView: View {
             Spacer()
         }
         .onAppear {
-            manager.fetchTodaySteps()
-            manager.fetchHR()
-            manager.fetchTodaysCalories()
+//            manager.fetchTodaySteps()
+//            manager.fetchHR()
+//            manager.fetchTodaysCalories()
         }
     }
     

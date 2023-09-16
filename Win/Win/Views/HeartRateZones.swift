@@ -30,11 +30,15 @@ struct ZoneData: Hashable, Identifiable {
 }
 
 struct HeartRateZones: View {
+    @State private var showDetail = false
+    var currentXPos = 0.0
+    var currentYPos = 0.0
     var age = 28
+    var zoneHeight = 60.0
+    var leftColTextWidth = 60.0
     var maxHR: Int {
         return 220 - age
     }
-    
     var heartRateZones = [
         ZoneData(maxHR: 198, lowerPercent: 90, upperPercent: 100, color: Color.red),
         ZoneData(maxHR: 198, lowerPercent: 80, upperPercent: 90, color: Color.orange),
@@ -42,6 +46,9 @@ struct HeartRateZones: View {
         ZoneData(maxHR: 198, lowerPercent: 60, upperPercent: 70, color: Color.blue),
         ZoneData(maxHR: 198, lowerPercent: 50, upperPercent: 60, color: Color.green),
     ]
+    var zoneContainerHeight: Double {
+        return Double(heartRateZones.count) * zoneHeight
+    }
     
     
     var body: some View {
@@ -59,17 +66,32 @@ struct HeartRateZones: View {
                 
                 VStack(spacing: 0) {
                     ForEach(heartRateZones, id: \.self) { zone in
-                        Zone(lower: zone.lowerLimit, upper: zone.upperLimit, color: zone.color)
+                        Zone(lower: zone.lowerLimit, upper: zone.upperLimit, color: zone.color, zoneHeight: zoneHeight, leftColTextWidth: leftColTextWidth)
                     }
                 }
                 
                 Circle()
                     .fill(.white)
                     .frame(width: 16, height: 16)
-                    .position(x: 250, y: 45)
+                    .position(x: currentXPos + leftColTextWidth + 16, y: zoneContainerHeight - 8 - currentYPos)
                     .shadow(radius: 2.0)
             }
-            .frame(height: 160)
+            .frame(height: zoneContainerHeight)
+            
+            Spacer()
+            
+            Button {
+                withAnimation(.easeInOut(duration: 0.5)) {
+                    showDetail.toggle()
+                }
+            } label: {
+                Label("Graph", systemImage: "chevron.right.circle")
+                    .labelStyle(.iconOnly)
+                    .imageScale(.large)
+                    .rotationEffect(.degrees(showDetail ? 90 : 0))
+                    .scaleEffect(showDetail ? 1.5 : 1)
+                    .padding()
+            }
         }
     }
 }
@@ -78,16 +100,18 @@ struct Zone: View {
     var lower: Int
     var upper: Int
     var color: Color
+    var zoneHeight: Double
+    var leftColTextWidth: Double
     
     var body: some View {
         HStack {
             Text("\(lower) / \(upper)")
                 .font(.caption)
                 .bold()
-                .frame(width: 60)
+                .frame(width: leftColTextWidth)
             
             Rectangle()
-                .frame(height: 32) // Specify the height only
+                .frame(height: zoneHeight) // Specify the height only
                 .foregroundColor(color)
                 .edgesIgnoringSafeArea(.horizontal)
         }
