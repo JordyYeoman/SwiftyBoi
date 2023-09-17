@@ -31,8 +31,8 @@ struct ZoneData: Hashable, Identifiable {
 
 struct HeartRateZones: View {
     @State private var showDetail = false
-    var currentXPos = 0.0
-    var currentYPos = 0.0
+    @State private var currentXPos = 0.0
+    @State private var currentYPos = 0.0
     var age = 28
     var zoneHeight = 60.0
     var leftColTextWidth = 60.0
@@ -70,11 +70,8 @@ struct HeartRateZones: View {
                     }
                 }
                 
-                Circle()
-                    .fill(.white)
-                    .frame(width: 16, height: 16)
+                PulseCircle(showDetail: $showDetail, xPos: $currentXPos, yPos: $currentYPos)
                     .position(x: currentXPos + leftColTextWidth + 16, y: zoneContainerHeight - 8 - currentYPos)
-                    .shadow(radius: 2.0)
             }
             .frame(height: zoneContainerHeight)
             
@@ -83,6 +80,8 @@ struct HeartRateZones: View {
             Button {
                 withAnimation(.easeInOut(duration: 0.5)) {
                     showDetail.toggle()
+                    currentXPos += 15.0
+                    currentYPos += 15.0
                 }
             } label: {
                 Label("Graph", systemImage: "chevron.right.circle")
@@ -91,6 +90,37 @@ struct HeartRateZones: View {
                     .rotationEffect(.degrees(showDetail ? 90 : 0))
                     .scaleEffect(showDetail ? 1.5 : 1)
                     .padding()
+            }
+        }
+    }
+}
+
+struct PulseCircle: View {
+    @State var animate = false
+    @Binding var showDetail: Bool
+    @Binding var xPos: Double
+    @Binding var yPos: Double
+    var size = 30.0
+
+    var colourToShow: Color {
+        return showDetail ? .white : .black
+    }
+    
+    var body: some View {
+        VStack {
+            ZStack {
+                Circle().fill(colourToShow.opacity(0.25)).frame(width: size, height: size).scaleEffect(self.animate ? 1 : 0)
+                Circle().fill(colourToShow.opacity(0.35)).frame(width: size - 10, height: size - 10).scaleEffect(self.animate ? 1 : 0)
+                Circle().fill(colourToShow.opacity(0.45)).frame(width: size - 25, height: size - 25).scaleEffect(self.animate ? 1 : 0)
+                Circle().fill(colourToShow).frame(width: size - 20.75, height: size - 20.75)
+            }
+            .onAppear { self.animate = true }
+            .animation(animate ? Animation.easeInOut(duration: 1).repeatForever(autoreverses: true) : .default, value: animate)
+            .onChange(of: showDetail) { _ in
+                self.animate = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    self.animate = true
+                }
             }
         }
     }
