@@ -34,11 +34,32 @@ func solve() {
     
     // Loop over each item in left array and get the difference between the equivalent element in the right arr.
     for (index, leftEl) in leftList.enumerated() {
-        print("(Int(leftEl) \(String(describing: Int(leftEl)))")
-        print("rightList[index] \(rightList[index])")
-
         totalDistance += abs((Int(leftEl) ?? 0) - (Int(rightList[index]) ?? 0))
     }
     
     print("Total Distance: \(totalDistance)")
+    
+    // Part 2
+    // Number of occurences
+    var numberOfOccurences: [String: Int] = [:]
+    var similarityScore = 0
+    
+    for leftEl in leftList {
+        for rightEl in rightList {
+            if leftEl == rightEl {
+                if numberOfOccurences[leftEl] == nil {
+                    numberOfOccurences[leftEl] = 0
+                }
+                numberOfOccurences[leftEl]! += 1
+            }
+        }
+    }
+    
+    // Tally up using our dictionary
+    for (key, value) in numberOfOccurences {
+        similarityScore += (Int(key) ?? 0) * value
+    }
+    
+    print("Number of occurences: \(numberOfOccurences)")
+    print("Similarity Score: \(similarityScore)")
 }
