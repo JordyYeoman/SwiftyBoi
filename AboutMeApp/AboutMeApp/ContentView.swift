@@ -30,7 +30,7 @@ struct ContentView: View {
                     Label("SendIt", systemImage: "helmet")
                 }
             
-            DatePlanner()
+            DatePlannerView()
                 .tabItem {
                     Label("Yeah Nawwww", systemImage: "helmet")
                 }
