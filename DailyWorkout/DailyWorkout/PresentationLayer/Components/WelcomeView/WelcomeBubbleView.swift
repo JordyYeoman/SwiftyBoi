@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct WelcomeBubbleView: View {
-    @State var viewModel: HomeViewModel
+    @State var viewModel = WelcomeBubbleViewModel()
     
     var body: some View {
         if !viewModel.hasDismissedWelcomeText {

@@ -6,6 +6,7 @@ struct ScrumdingerV3App: App {
     
     var body: some Scene {
         WindowGroup {
+            Stackz()
             ScrumsView(scrums: $scrums)
         }
     }

@@ -11,6 +11,9 @@ struct Workout: Identifiable {
     var exercises: [any Exercise]
     var durationInMinutes: Int
     var category: WorkoutCategory
+    var timeInHours: Double {
+        Double(durationInMinutes) / 60
+    }
 }
 
 // MARK: Preview Data
@@ -37,6 +40,14 @@ extension Workout {
         Workout(
             name: "Anabolic Monster",
             exercises: [sampleExercise2, sampleExercise1, sampleExercise3],
+            durationInMinutes: 35, category: .strength),
+        Workout(
+            name: "Juiiiccyyyyy",
+            exercises: [sampleExercise3, sampleExercise1, sampleExercise3],
+            durationInMinutes: 35, category: .strength),
+        Workout(
+            name: "Big Poppa",
+            exercises: [sampleExercise3, sampleExercise3, sampleExercise2],
             durationInMinutes: 35, category: .strength),
     ]
     

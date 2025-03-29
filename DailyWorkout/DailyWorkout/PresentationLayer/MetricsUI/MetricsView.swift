@@ -60,7 +60,7 @@ struct MetricsView: View {
                                 .frame(width: 12, height: 12)
                                 .symbolEffect(
                                     .bounce,
-                                    options: .repeat(.periodic(3, delay: 2)))
+                                    options: .repeat(.periodic(10, delay: 1)))
                         }
                         .font(.caption)
                         .fontWeight(.medium)
