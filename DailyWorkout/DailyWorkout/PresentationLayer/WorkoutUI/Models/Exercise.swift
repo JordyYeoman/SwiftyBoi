@@ -1,10 +1,13 @@
 import Foundation
 
-protocol Exercise: Identifiable, Equatable {
+// Base protocol
+protocol Exercise: Identifiable, Hashable {
+    var id: UUID { get }
     var title: String { get }
     var description: String? { get }
 }
 
+// Concrete implementations
 struct StrengthExercise: Exercise {
     let id: UUID = UUID()
     let title: String
@@ -25,3 +28,4 @@ struct CardioExercise: Exercise {
     var durationInMinutes: Double
     var caloriesBurned: Int
 }
+

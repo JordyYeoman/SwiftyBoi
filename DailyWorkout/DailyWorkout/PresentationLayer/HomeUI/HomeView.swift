@@ -8,27 +8,7 @@ struct HomeSectionHeader: View {
         Text(title)
             .font(.headline)
             .fontWeight(.bold)
-            .padding(.vertical, 8)
     }
-}
-
-struct PetData: Identifiable {
-    var id: UUID
-
-    var year: Int
-    var population: Double
-
-    init(year: Int, population: Double) {
-        id = UUID()
-        self.year = year
-        self.population = population
-    }
-}
-
-struct PetDataSeries: Identifiable {
-    let type: String
-    let petData: [PetData]
-    var id: String { type }
 }
 
 func formatte(number: Int) -> String {
@@ -41,24 +21,6 @@ func formatte(number: Int) -> String {
 struct HomeView: View {
     @State var viewModel = HomeViewModel()
     let heartRates: [HeartRate] = HeartRate.exampleData
-    let catData: [PetData] = [
-        PetData(year: 2000, population: 6.8),
-        PetData(year: 2010, population: 8.2),
-        PetData(year: 2015, population: 12.9),
-        PetData(year: 2022, population: 15.2),
-    ]
-    let dogData: [PetData] = [
-        PetData(year: 2000, population: 5),
-        PetData(year: 2010, population: 5.3),
-        PetData(year: 2015, population: 7.9),
-        PetData(year: 2022, population: 10.6),
-    ]
-    var data: [PetDataSeries] {
-        [
-            PetDataSeries(type: "cat", petData: catData),
-            PetDataSeries(type: "dog", petData: dogData),
-        ]
-    }
 
     let linearGradient = LinearGradient(
         gradient: Gradient(colors: [
@@ -70,33 +32,32 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(spacing: 0) {
+                VStack(spacing: 12) {
                     WelcomeBubbleView()
-                    HomeSectionHeader(title: "Today's Stats")
                     MetricsView()
                         .background(Color(UIColor.secondarySystemBackground))
 
                     HomeSectionHeader(title: "Recent Workouts")
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHStack {
-                            ForEach($viewModel.workouts, id: \.id) { $workout in
+                            ForEach(viewModel.workouts, id: \.id) { workout in
                                 NavigationLink(
-                                    destination: WorkoutView(workout: $workout)
+                                    destination: WorkoutView(workout: workout)
                                 ) {
                                     workoutCard(workout: workout)
                                 }
                             }
                         }
-                        .padding(.horizontal)
                     }
-                    
+
                     DashboardView()
-                        .padding(.horizontal, 16)
+                    WorkoutCTAButtonView()
+                        .padding(.top, 8)
                 }
-                .padding(.bottom, 24)
+                .padding(.horizontal, 8)
             }
-            .background(Color(UIColor.secondarySystemBackground))
         }
+        .background(Color(UIColor.secondarySystemBackground))
     }
 
     @ViewBuilder func workoutCard(workout: Workout) -> some View {

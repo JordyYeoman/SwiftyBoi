@@ -27,7 +27,6 @@ struct WelcomeBubbleView: View {
                 .padding(.trailing, 24)
                 .foregroundStyle(Color.retroDarkPurple)
             }
-            .padding(.horizontal, 12)
             .background(Color(UIColor.secondarySystemBackground))
         }
     }

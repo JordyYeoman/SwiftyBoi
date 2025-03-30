@@ -94,7 +94,7 @@ struct MetricsView: View {
             .padding()
             .foregroundStyle(.white)
         }
-        .frame(maxWidth: 300, maxHeight: 250, alignment: .center)
+        .frame(maxHeight: 250, alignment: .center)
     }
 }
 

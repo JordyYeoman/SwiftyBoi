@@ -23,6 +23,7 @@ struct AppBarView: View {
                 }
             }
             .padding()
+            .padding(.top, 0)
             .foregroundStyle(.white)
         }
         .background(.retroDarkPurple)

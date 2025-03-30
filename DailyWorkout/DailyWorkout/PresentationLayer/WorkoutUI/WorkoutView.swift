@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct WorkoutView: View {
-    @Binding var workout: Workout
+    var workout: Workout
 
     @State private var editingWorkout = Workout.emptyWorkout
     @State private var isPresentingEditView = false
@@ -9,8 +9,20 @@ struct WorkoutView: View {
 
     var body: some View {
         List {
-            Section(header: Text("Exercises")) {
-                Text("Sup")
+            if workout.strengthExercises.isNotEmpty {
+                Section(header: Text("Strength Exercises")) {
+                    ForEach(workout.strengthExercises) { strengthExercise in
+                        Text(strengthExercise.title)
+                    }
+                }
+            }
+
+            if workout.cardioExercises.isNotEmpty {
+                Section(header: Text("Cardio Exercises")) {
+                    ForEach(workout.cardioExercises) { cardioExercise in
+                        Text(cardioExercise.title)
+                    }
+                }
             }
         }
         .navigationTitle(workout.name)
@@ -24,6 +36,6 @@ struct WorkoutView: View {
 
 struct WorkoutView_Previews: PreviewProvider {
     static var previews: some View {
-        WorkoutView(workout: .constant(Workout.sampleData[0]))
+        WorkoutView(workout: Workout.sampleData[0])
     }
 }
